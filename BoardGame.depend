@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1461744470 source:/home/user/Dropbox/BoardGame/Main.cpp
+	"Game.h"
+	<iostream>
+	<string>
+	<sstream>
+	<fstream>
+	<stdlib.h>
+
+1461724898 /home/user/Dropbox/BoardGame/include/Game.h
+	<iostream>
+
+1461744379 source:/home/user/Dropbox/BoardGame/src/Game.cpp
+	"Game.h"
+	<cstdlib>
+	"time.h"
+	<iostream>
+	<ctime>
+
