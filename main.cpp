@@ -1,4 +1,3 @@
-
 #include "Game.h"
 #include <iostream>
 #include <string>
@@ -8,8 +7,9 @@
 using namespace std;
 
 int main(){
-    int humanPlayers =0;
-    int compPlayers =0;
+    int humanPlayers = 0;
+    int compPlayers = 0;
+    bool range = false;
 
     cout<<"Welcome to BOARD GAME THE MUSICAL"<<endl<<endl;
 
@@ -20,15 +20,32 @@ int main(){
         cin>>humanPlayers;
     }
     cout<<endl;
-    if(humanPlayers==1){//if only one human allows 1 to 5-humanplayers amount of computers
+
+    if(humanPlayers==1){//if only one human allows 1 to 5-human players amount of computers
         cout<<"How many computer players would you like? 1-"<<5-humanPlayers<<endl;
-        cin>>compPlayers;
+        while(range == false){
+            cin>>compPlayers;
+            if(compPlayers > 0 && compPlayers < 5-humanPlayers){
+                range = true;
+            }
+            else if(compPlayers<0 || compPlayers>(5-humanPlayers)){
+                cout<<"Please choose a number between 1-"<<5-humanPlayers<<endl;
+            }
+        }
         cout<<endl;
     }
 
     else if(humanPlayers!=5){//if there are multiple humans allows 0 computers
         cout<<"How many computer players would you like? 0-"<<5-humanPlayers<<endl;
-        cin>>compPlayers;
+        while(range == false){
+            cin>>compPlayers;
+            if(0 < compPlayers && compPlayers < 5-humanPlayers){
+                range = true;
+            }
+            else{
+                cout<<"Please choose a number between 1-"<<5-humanPlayers<<endl;
+            }
+        }
     }
     cout<<endl;
     Game g;//starts game class
@@ -52,7 +69,7 @@ int main(){
     int bsize;
     cin>>bsize;//gets size of board
     while(bsize<10||bsize>75){//Asks again if size out of bounds
-        cout<<"10-60"<<endl<<endl;
+        cout<<"Please enter a number between 10-75"<<endl<<endl;
         cin>>bsize;
     }
     g.boardCreation(bsize);//creates board
