@@ -1,3 +1,4 @@
+
 #include "Game.h"
 #include <iostream>
 #include <string>
@@ -7,9 +8,8 @@
 using namespace std;
 
 int main(){
-    int humanPlayers = 0;
-    int compPlayers = 0;
-    bool range = false;
+    int humanPlayers =0;
+    int compPlayers =0;
 
     cout<<"Welcome to BOARD GAME THE MUSICAL"<<endl<<endl;
 
@@ -20,32 +20,15 @@ int main(){
         cin>>humanPlayers;
     }
     cout<<endl;
-
-    if(humanPlayers==1){//if only one human allows 1 to 5-human players amount of computers
+    if(humanPlayers==1){//if only one human allows 1 to 5-humanplayers amount of computers
         cout<<"How many computer players would you like? 1-"<<5-humanPlayers<<endl;
-        while(range == false){
-            cin>>compPlayers;
-            if(compPlayers > 0 && compPlayers < 5-humanPlayers){
-                range = true;
-            }
-            else if(compPlayers<0 || compPlayers>(5-humanPlayers)){
-                cout<<"Please choose a number between 1-"<<5-humanPlayers<<endl;
-            }
-        }
+        cin>>compPlayers;
         cout<<endl;
     }
 
     else if(humanPlayers!=5){//if there are multiple humans allows 0 computers
         cout<<"How many computer players would you like? 0-"<<5-humanPlayers<<endl;
-        while(range == false){
-            cin>>compPlayers;
-            if(0 < compPlayers && compPlayers < 5-humanPlayers){
-                range = true;
-            }
-            else{
-                cout<<"Please choose a number between 1-"<<5-humanPlayers<<endl;
-            }
-        }
+        cin>>compPlayers;
     }
     cout<<endl;
     Game g;//starts game class
@@ -69,7 +52,7 @@ int main(){
     int bsize;
     cin>>bsize;//gets size of board
     while(bsize<10||bsize>75){//Asks again if size out of bounds
-        cout<<"Please enter a number between 10-75"<<endl<<endl;
+        cout<<"10-60"<<endl<<endl;
         cin>>bsize;
     }
     g.boardCreation(bsize);//creates board
@@ -109,9 +92,9 @@ int main(){
         bool skipNext = false;//for when a player is skipped
         if(g.curr->human){//plays a human turn
             cout<<g.curr->name<<", it's your turn! What would you like to do?"<<endl<<endl;
-            string choice = "0";
+            int choice=0;
             int amt = 0;
-            while(choice!="1"&&choice!="3"){//keeps showing menu until turn is over
+            while(choice!=1&&choice!=3){//keeps showing menu until turn is over
                 cout<<"1. Roll dice"<<endl;
                 cout<<"2. View Cards"<<endl;
                 cout<<"3. Flip Board"<<endl;
@@ -119,11 +102,11 @@ int main(){
 
                 cin>>choice;
 
-                while(choice!="1"&&choice!="2"&&choice!="3"&&choice!="4"){//if player chooses wrong value
+                while(choice!=1&&choice!=2&&choice!=3&&choice!=4){//if player chooses wrong value
                     cout<<"Try again"<<endl;
                     cin>>choice;
                 }
-                if(choice == "1"){//roll dice to end turn
+                if(choice == 1){//roll dice to end turn
                     for(int k = 0;k<=g.curr->rollamt;k++){
                         g.movePlayer(g.curr);//runs move function
                         if(g.locationCheck(g.curr)){//checks if a fight needs to start
@@ -153,7 +136,7 @@ int main(){
                     g.curr->rollamt = 0;
                     g.curr->slowAmt = 1; //resets their slow value to one encase it was changed
                 }
-                if(choice == "2"){//shows cards
+                if(choice == 2){//shows cards
                     amt = g.viewCards(g.curr);//runs card function, returns amount for repetitive rolls
                     if(amt == -1){//if it puts out a -1 value then you should skip next player
                         skipNext = true;
@@ -161,12 +144,12 @@ int main(){
                     }
                     g.curr->rollamt = amt;
                 }
-                if(choice == "3"){//quits game
+                if(choice == 3){//quits game
                     cout<<"You flip the board, everyone loses"<<endl;
                     quit = true;
                     return 0;
                 }
-                if(choice == "4"){//prints board
+                if(choice == 4){//prints board
                     g.printBoard();
                 }
                 if(g.curr->location>=bsize){//if player reaches the end stops game
@@ -230,3 +213,4 @@ int main(){
         }
     }
 }
+
