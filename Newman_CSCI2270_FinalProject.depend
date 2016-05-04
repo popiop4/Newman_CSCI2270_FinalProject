@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1462326970 source:/home/user/Dropbox/BoardGame/Newman_CSCI2270_FinalProject/Game.cpp
+	"Game.h"
+	<cstdlib>
+	"time.h"
+	<iostream>
+	<ctime>
+
+1462326970 /home/user/Dropbox/BoardGame/Newman_CSCI2270_FinalProject/Game.h
+	<iostream>
+
+1462328348 source:/home/user/Dropbox/BoardGame/Newman_CSCI2270_FinalProject/main.cpp
+	"Game.h"
+	<iostream>
+	<string>
+	<sstream>
+	<fstream>
+	<stdlib.h>
+
+1461744379 source:/home/user/Dropbox/BoardGame/Newman_CSCI2270_FinalProject/src/Game.cpp
+	"Game.h"
+	<cstdlib>
+	"time.h"
+	<iostream>
+	<ctime>
+
